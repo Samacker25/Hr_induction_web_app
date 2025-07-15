@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Feedback</title><link rel="stylesheet" href="styles.css" /></head>
+<script src="submit.js"></script>
+<body>
+  <div class="container">
+    <h1>Feedback Form</h1>
+    <form id="feedbackForm">
+      <label>1. Has the training programme met its objectives?</label>
+      <select name="q1" required>
+        <option value="3">Strongly Agree</option>
+        <option value="2">Agree</option>
+        <option value="1">Disagree</option>
+      </select>
+      <label>Remarks:</label>
+      <textarea name="remarks"></textarea>
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const remarks = document.querySelector('textarea[name="remarks"]').value;
+      sessionStorage.setItem('remarks', remarks);
+      const script = document.createElement('script');
+      script.src = 'submit.js';
+      document.body.appendChild(script);
+      setTimeout(() => window.location.href = 'thankyou.html', 1000);
+    });
+  </script>
+</body></html>

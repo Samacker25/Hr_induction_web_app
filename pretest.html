@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pre-Test</title><link rel="stylesheet" href="styles.css" /></head>
+<body>
+  <div class="container">
+    <h1>Pre-Test</h1>
+    <form id="pretestForm">
+      <label>1. What is the correct method for hand hygiene?</label><br>
+      <input type="radio" name="q1" value="A" required> Soap only<br>
+      <input type="radio" name="q1" value="B"> Alcohol rub<br>
+      <input type="radio" name="q1" value="C"> Water only<br>
+      <input type="radio" name="q1" value="D"> No cleaning<br><br>
+      <label>2. What does BMW stand for?</label><br>
+      <input type="radio" name="q2" value="A" required> Biomedical Waste<br>
+      <input type="radio" name="q2" value="B"> Bio Management Work<br>
+      <input type="radio" name="q2" value="C"> Basic Medical Waste<br>
+      <input type="radio" name="q2" value="D"> Biological Material Waste<br><br>
+      <button type="submit">Submit Pre-Test</button>
+    </form>
+  </div>
+  <script>
+    const correctAnswers = { q1: 'B', q2: 'A' };
+    document.getElementById('pretestForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let score = 0;
+      for (const q in correctAnswers) {
+        const selected = document.querySelector('input[name="' + q + '"]:checked');
+        if (selected && selected.value === correctAnswers[q]) score++;
+      }
+      sessionStorage.setItem('pretestScore', score);
+      window.location.href = 'pdf.html';
+    });
+  </script>
+</body></html>

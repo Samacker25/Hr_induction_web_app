@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Post-Test</title><link rel="stylesheet" href="styles.css" /></head>
+<body>
+  <div class="container">
+    <h1>Post-Test Questions</h1>
+    <form id="postTestForm">
+      <label>1. What is a standard hospital precaution?</label>
+      <select name="q1" required>
+        <option value="">--Select--</option>
+        <option value="C">Hand hygiene</option>
+        <option value="A">Wearing tie</option>
+        <option value="B">Talking slowly</option>
+        <option value="D">Skipping breaks</option>
+      </select>
+      <button type="submit">Go to Feedback</button>
+    </form>
+  </div>
+  <script>
+    const correctAnswers = { q1: 'C' };
+    document.getElementById('postTestForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let score = 0;
+      const selected = document.querySelector('[name="q1"]');
+      if (selected && selected.value === correctAnswers.q1) score++;
+      sessionStorage.setItem('posttestScore', score);
+      window.location.href = 'feedback.html';
+    });
+  </script>
+</body></html>
