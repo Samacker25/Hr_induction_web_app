@@ -1,34 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Pre-Test</title><link rel="stylesheet" href="styles.css" /></head>
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Test</title>
+  <link rel="stylesheet" href="styles.css" /></head>
+<script>
+  // Load external header/footer
+  document.querySelectorAll('[data-include]').forEach(el => {
+    fetch(el.getAttribute("data-include"))
+      .then(res => res.text())
+      .then(html => el.innerHTML = html);
+  });
+</script>
 <body>
+  <!-- Header -->
+<div data-include="header.html"></div>
   <div class="container">
     <h1>Pre-Test</h1>
     <form id="pretestForm">
-      <label>1. What is the correct method for hand hygiene?</label><br>
-      <input type="radio" name="q1" value="A" required> Soap only<br>
-      <input type="radio" name="q1" value="B"> Alcohol rub<br>
-      <input type="radio" name="q1" value="C"> Water only<br>
-      <input type="radio" name="q1" value="D"> No cleaning<br><br>
-      <label>2. What does BMW stand for?</label><br>
-      <input type="radio" name="q2" value="A" required> Biomedical Waste<br>
-      <input type="radio" name="q2" value="B"> Bio Management Work<br>
-      <input type="radio" name="q2" value="C"> Basic Medical Waste<br>
-      <input type="radio" name="q2" value="D"> Biological Material Waste<br><br>
+      <label>1. What is the value of Charnock Hospital?</label><br>
+      <input type="radio" name="q1" value="A" required> To be an Ethical and Integrated Super Specialty Hospital.<br>
+      <input type="radio" name="q1" value="B"> To be amongst the top hospitals of our region.<br>
+      <input type="radio" name="q1" value="C">	'Patient First' shall be the guiding philosophy every time by everyone.<br>
+      <label>2. Duration for the entire procedure of hand-washing with soap & water is</label><br>
+      <input type="radio" name="q2" value="A" required> 20-30 sec<br>
+      <input type="radio" name="q2" value="B"> 30-40 sec <br>
+      <input type="radio" name="q2" value="C"> 40-50 sec<br>
+      <input type="radio" name="q2" value="D"> 40-60 sec<br><br>
+      <label>3.	Which of the followings are out of the ‘Scope of Services”-</label><br>
+      <input type="radio" name="q3" value="A" required>	Psychiatric IPD<br>
+      <input type="radio" name="q3" value="B"> Nuclear Medicine<br>
+      <input type="radio" name="q3" value="C"> Burn Unit<br>
+      <input type="radio" name="q3" value="D"> Oncology Unit<br><br>
+      <label>4.	Who is not a member of Internal Complaint Committee?</label><br>
+      <input type="radio" name="q4" value="A" required>	Chief Executive Officer.<br>
+      <input type="radio" name="q4" value="B"> GM Nursing.<br>
+      <input type="radio" name="q4" value="C"> Psychologist.<br>
+      <input type="radio" name="q4" value="D"> GM Marketing<br><br>
+      <label>5.	Incident Reporting should be completed within 24 hours of the event When to do Incident Reporting?</label><br>
+      <input type="radio" name="q5" value="A" required>	A patient’s condition worsens due to the natural course of illness<br>
+      <input type="radio" name="q5" value="B"> A staff member requests a day off<br>
+      <input type="radio" name="q5" value="C"> An adverse drug reaction occurs<br>
+      <input type="radio" name="q5" value="D"> A visitor complains about hospital food<br><br>
+      <label>6.	SPIKES method, a protocol for delivering bad news, what does “SPIKES” stand for in the medical context-</label><br>
+      <input type="radio" name="q6" value="A" required>	Setting, perception, invitation, knowledge, empathy, summary.<br>
+      <input type="radio" name="q6" value="B"> Situation, problem, investigation, Knowledge, Explanation, support.<br>
+      <input type="radio" name="q6" value="C"> Symptom, perception, Information, knowledge, Emotion, strategy.<br>
+      <label>7. Verifying the patient’s identity using two identifiers ensures which of the following ‘R’s?</label><br>
+      <input type="radio" name="q7" value="A" required>	Right Medication<br>
+      <input type="radio" name="q7" value="B"> Right Route<br>
+      <input type="radio" name="q7" value="C"> Right Patient<br>
+      <input type="radio" name="q7" value="D"> Right Dose<br><br>
+      <label>8.	What is the primary purpose of triaging in a healthcare setting?</label><br>
+      <input type="radio" name="q8" value="A" required>	To discharge patients faster<br>
+      <input type="radio" name="q8" value="B"> To prioritize patients based on the severity of their condition<br>
+      <input type="radio" name="q8" value="C"> To assign beds to all incoming patients<br>
+      <input type="radio" name="q8" value="D"> To reduce the cost of medical care<br><br>
+      <label>9.	What are the Mandatory Contents of “Informed Consent”?</label><br>
+      <input type="radio" name="q9" value="A" required>	Purpose of the Procedure<br>
+      <input type="radio" name="q9" value="B"> Witness<br>
+      <input type="radio" name="q9" value="C"> Potential Risks and Discomforts<br>
+      <input type="radio" name="q9" value="D"> Alternative Options<br>
+      <input type="radio" name="q9" value="E"> Statement of Understanding<br>
+      <input type="radio" name="q9" value="F"> All of the above<br><br>
+      <label>10. What are the important components of good documentation practice?</label><br>
+      <input type="radio" name="q10" value="A" required>	Accuracy and Completeness<br>
+      <input type="radio" name="q10" value="B"> Legibility<br>
+      <input type="radio" name="q10" value="C"> Correction and Error handling<br>
+      <input type="radio" name="q10" value="D"> Accountability tracing<br>
+      <input type="radio" name="q10" value="E"> All of the above<br><br>
+      <label>11. What is the correct sequence of steps to perform Adult Cardiopulmonary Resuscitation (CPR)</label><br>
+      <input type="radio" name="q11" value="A" required>	Check for response → Call for help → Chest compressions → Airway → Breaths<br>
+      <input type="radio" name="q11" value="B"> Check for response → Call for help → Open airway → Chest compressions → Breaths<br>
+      <input type="radio" name="q11" value="C"> Check for breathing → Open airway → Chest compressions → Call for help → Breaths<br>
+      <input type="radio" name="q11" value="D"> Check for response → Call for help → Chest compressions → Breaths → Open airway<br><br>
+      <label>12. Biomedical waste Management is the process of collecting, treating & disposing of hazardous waste from healthcare setting, Nasogastric tube discarded in which color code bin-</label><br>
+      <input type="radio" name="q12" value="A" required>	Black<br>
+      <input type="radio" name="q12" value="B"> Yellow<br>
+      <input type="radio" name="q12" value="C"> Red<br>
+      <input type="radio" name="q12" value="D"> Blue<br><br>
+      <b><i>A minimum of 60 % mark is required to pass or the training will be held again.</i></b><br>
+      <button type="button" onclick="showPretestScore()">Check Pretest Score</button>
+      <p id="pretestScoreDisplay" style="font-weight: bold;"></p>
       <button type="submit">Submit Pre-Test</button>
-    </form>
+    </form> 
   </div>
   <script>
-    const correctAnswers = { q1: 'B', q2: 'A' };
-    document.getElementById('pretestForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      let score = 0;
-      for (const q in correctAnswers) {
-        const selected = document.querySelector('input[name="' + q + '"]:checked');
-        if (selected && selected.value === correctAnswers[q]) score++;
-      }
-      sessionStorage.setItem('pretestScore', score);
-      window.location.href = 'pdf.html';
-    });
-  </script>
+  const correctAnswers = {
+    q1: 'C', q2: 'D', q3: 'D', q4: 'D',
+    q5: 'C', q6: 'A', q7: 'C', q8: 'B',
+    q9: 'E', q10: 'E', q11: 'A', q12: 'C'
+  };
+
+  function showPretestScore() {
+    let score = 0;
+    for (const q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) score++;
+    }
+    sessionStorage.setItem('pretestScore', score);
+    document.getElementById("pretestScoreDisplay").textContent = `Your pretest Score: ${score} / 12`;
+  }
+
+  document.getElementById('pretestForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    let score = 0;
+    for (const q in correctAnswers) {
+      const selected = document.querySelector(`input[name="${q}"]:checked`);
+      if (selected && selected.value === correctAnswers[q]) score++;
+    }
+    sessionStorage.setItem('pretestScore', score);
+    window.location.href = 'pdf.html';
+  });
+</script>
+
+  <!-- Footer -->
+<div data-include="footer.html"></div>
 </body></html>
