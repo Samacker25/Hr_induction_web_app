@@ -1,10 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hospital Info PDF</title><link rel="stylesheet" href="styles.css" /></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hospital Induction PDF</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* extra styles just for the overlay */
+    #overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .iframe-wrapper { position: relative; }
+  </style>
+</head>
 <body>
   <div class="container">
-    <h1>Hospital Induction Info</h1>
-    <iframe src="https://drive.google.com/file/d/1AUtlv3L3MOurgS22vwC5dpcbmOCUcJmP/view?usp=sharing" width="100%" height="500px"></iframe>
-    <button onclick="window.location.href='posttest.html'">Go for Post-Test</button>
+    <h2>Hospital Induction Document</h2>
+
+    <!-- ⬇︎ Wrapper needed so overlay can sit on top -->
+    <div class="iframe-wrapper">
+      <iframe id="pdfViewer"
+              src="https://drive.google.com/file/d/1NoJ9mhYZ3GS0ro1A1K-8AoF2cxmr0vra/view?usp=sharing/preview"
+              width="100%" height="500" style="border:1px solid #ccc;"></iframe>
+
+      <!-- ⬇︎ Overlay that captures the first click -->
+      <div id="overlay">Click here to start reading&nbsp;📄</div>
+    </div>
+
+    <p id="message">After clicking, please review the document for 20 seconds&hellip;</p>
+    <button id="continueBtn" disabled>Go for Post Test</button>
   </div>
-</body></html>
+
+  <script>
+    const overlay      = document.getElementById('overlay');
+    const continueBtn  = document.getElementById('continueBtn');
+    const message      = document.getElementById('message');
+
+    let clicked  = false;
+    let waited   = false;
+
+    // ——— Called each time we might be ready ———
+    function checkUnlock() {
+      if (clicked && waited) {
+        message.textContent = "✅ You may now proceed to the post‑test.";
+        continueBtn.disabled = false;
+        sessionStorage.setItem('pdfViewed', 'yes');
+      }
+    }
+
+    // ——— 1) Wait 20 s from page load ———
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        waited = true;
+        checkUnlock();
+        if (!clicked) {
+          message.textContent = "⚠ Please click the document to proceed.";
+        }
+      }, 20000);  // 20 000 ms
+    });
+
+    // ——— 2) Detect FIRST click on overlay ———
+    overlay.addEventListener('click', () => {
+      clicked = true;
+      overlay.style.display = 'none';          // remove overlay
+      message.textContent = "⏳ 20‑second timer running&hellip;";
+      checkUnlock();
+    });
+
+    // ——— 3) Continue button logic ———
+    continueBtn.addEventListener('click', () => {
+      if (sessionStorage.getItem('pdfViewed') === 'yes') {
+        sessionStorage.setItem('postTestStarted', 'yes');
+        window.location.href = 'posttest.html';
+      } else {
+        alert('⚠ Please view the document first.');
+      }
+    });
+    // Prevent back navigation to previous pages after post test starts
+    window.onload = () => {
+      if (sessionStorage.getItem("postTestStarted") === "yes") {
+        window.history.forward();
+      }
+    };
+  </script>
+</body>
+</html>
