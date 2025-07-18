@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Employee Induction</title><link rel="stylesheet" href="styles.css" /></head>
+<script>
+  // Load external header/footer
+  document.querySelectorAll('[data-include]').forEach(el => {
+    fetch(el.getAttribute("data-include"))
+      .then(res => res.text())
+      .then(html => el.innerHTML = html);
+  });
+</script>
 <body>
+  <!-- Header -->
+  <div data-include="header.html"></div>
   <div class="container">
     <h1>Employee Induction Form</h1>
     <form id="employeeForm">
       <label>Date:</label><input type="date" id="date" required />
+      <label>Name:</label><input type="text" id="name" required />
       <label>Employee ID:</label><input type="text" id="employeeId" required />
       <label>Department:</label><input type="text" id="department" required />
       <label>Email ID:</label><input type="email" id="email" required />
@@ -17,12 +28,20 @@
       e.preventDefault();
       const data = {
         date: document.getElementById('date').value,
+        name: document.getElementById('name').value,
         employeeId: document.getElementById('employeeId').value,
         department: document.getElementById('department').value,
         email: document.getElementById('email').value
       };
-      sessionStorage.setItem('employeeData', JSON.stringify(data));
+      sessionStorage.setItem('date', data.date);
+    sessionStorage.setItem('name', data.name);
+    sessionStorage.setItem('employeeId', data.employeeId);
+    sessionStorage.setItem('department', data.department);
+    sessionStorage.setItem('email', data.email);
+
       window.location.href = 'pretest.html';
     });
   </script>
+  <!-- Footer -->
+  <div data-include="footer.html"></div>
 </body></html>
