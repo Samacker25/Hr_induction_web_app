@@ -1,29 +1,35 @@
-const employeeData = JSON.parse(sessionStorage.getItem("employeeData"));
-const pretestScore = sessionStorage.getItem("pretestScore");
-const posttestScore = sessionStorage.getItem("posttestScore");
-const remarks = sessionStorage.getItem("remarks") || "";
+function submitFinalData() {
+  const data = {
+    name: sessionStorage.getItem("name"),
+    date: sessionStorage.getItem("date"),
+    employeeId: sessionStorage.getItem("employeeId"),
+    department: sessionStorage.getItem("department"),
+    email: sessionStorage.getItem("email"),
+    pretestScore: sessionStorage.getItem("pretestScore"),
+    posttestScore: sessionStorage.getItem("posttestScore"),
+    feedbackData: JSON.parse(sessionStorage.getItem("feedbackData")),
+    remarks: sessionStorage.getItem("remarks")
+  };
 
-// Combine all data into one object
-const data = {
-  ...employeeData,
-  pretestScore,
-  posttestScore,
-  remarks
-};
-
-// Convert to FormData for CORS-safe POST
-const form = new FormData();
-form.append("payload", JSON.stringify(data));
-
-// Send to Google Apps Script Web App
-fetch("https://script.google.com/macros/s/AKfycbx4VMPtV9cDx7NCe_Y-DgIjCWIuBptS5mxPPlC0yyQWxMMXmq2ABLg8C8b4Ks-fZ1ACjQ/exec", {
-  method: "POST",
-  body: form
-})
-.then(res => res.text())
-.then(response => {
-  console.log("✅ Server said:", response);
-})
-.catch(error => {
-  console.error("❌ Error sending data:", error);
-});
+  return fetch("https://script.google.com/macros/s/AKfycbwQrJAq2YAIQQmibJ1PuU0_eI6V_ctgJVL4paIdJZuuV8VaMo8Rry8Y4IxWQMDX6VbG/exec", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: `payload=${encodeURIComponent(JSON.stringify(data))}`
+  })
+  .then(res => res.text())
+  .then(result => {
+    console.log("Data submitted:", result);
+    if (!result.includes("Success")) {
+      console.error("Error from server:", result);
+      throw new Error(result);
+    }
+    return true;
+  })
+  .catch(err => {
+    console.error("Submission error:", err);
+    alert("Error submitting data. Please try again.");
+    throw err;
+  });
+}
