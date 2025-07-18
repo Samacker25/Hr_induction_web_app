@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Feedback</title><link rel="stylesheet" href="styles.css" /></head>
+<script>
+  // Load external header/footer
+  document.querySelectorAll('[data-include]').forEach(el => {
+    fetch(el.getAttribute("data-include"))
+      .then(res => res.text())
+      .then(html => el.innerHTML = html);
+  });
+</script>
 <script src="submit.js"></script>
 <body>
+  <!-- Header -->
+<div data-include="header.html"></div>
   <div class="container">
     <h1>Feedback Form</h1>
     <form id="feedbackForm">
       <label>1. Has the training programme met its objectives?</label>
       <select name="q1" required>
+        <option value="3">Strongly Agree</option>
+        <option value="2">Agree</option>
+        <option value="1">Disagree</option>
+         </select>
+        <label>2. Was the alloted time for the training sufficient?</label>
+      <select name="q2" required>
+        <option value="3">Strongly Agree</option>
+        <option value="2">Agree</option>
+        <option value="1">Disagree</option>
+      </select>
+      <label>3. Were the objectives of the training clearly defined?</label>
+      <select name="q3" required>
+        <option value="3">Strongly Agree</option>
+        <option value="2">Agree</option>
+        <option value="1">Disagree</option>
+      </select>
+      <label>4. Was the trainer knowledgeable about the training topics?</label>
+      <select name="q4" required>
+        <option value="3">Strongly Agree</option>
+        <option value="2">Agree</option>
+        <option value="1">Disagree</option>
+      </select>
+      <label>5. Were your queries, if any, answered properly?</label>
+      <select name="q5" required>
         <option value="3">Strongly Agree</option>
         <option value="2">Agree</option>
         <option value="1">Disagree</option>
@@ -18,14 +52,30 @@
     </form>
   </div>
   <script>
-    document.getElementById('feedbackForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const remarks = document.querySelector('textarea[name="remarks"]').value;
-      sessionStorage.setItem('remarks', remarks);
-      const script = document.createElement('script');
-      script.src = 'submit.js';
-      document.body.appendChild(script);
-      setTimeout(() => window.location.href = 'thankyou.html', 1000);
-    });
-  </script>
+  document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    const formData = {
+      q1: document.querySelector('[name="q1"]').value,
+      q2: document.querySelector('[name="q2"]').value,
+      q3: document.querySelector('[name="q3"]').value,
+      q4: document.querySelector('[name="q4"]').value,
+      q5: document.querySelector('[name="q5"]').value,
+    };
+    sessionStorage.setItem('feedbackData', JSON.stringify(formData));
+
+    const remarks = document.querySelector('textarea[name="remarks"]').value;
+    sessionStorage.setItem('remarks', remarks);
+
+    // Wait for submit to succeed before redirecting
+    submitFinalData()
+      .then(() => {
+        window.location.href = 'thankyou.html';
+      })
+      .catch(err => {
+        // Do nothing — error is already handled in submitFinalData()
+      });
+  });
+</script>
+
 </body></html>
