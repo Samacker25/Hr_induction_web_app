@@ -1,4 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Thank You</title><link rel="stylesheet" href="styles.css" /></head>
-<body><div class="container"><h1>Thank You from Charnock Hospital!</h1><p>Your responses have been recorded.</p></div></body></html>
+<script>
+  // Load external header/footer
+  document.querySelectorAll('[data-include]').forEach(el => {
+    fetch(el.getAttribute("data-include"))
+      .then(res => res.text())
+      .then(html => el.innerHTML = html);
+  });
+</script>
+<body>
+    <!-- Header -->
+<div data-include="header.html"></div>
+<div class="container"><h1>Thank You from Charnock Hospital!</h1><p>Your responses have been recorded.</p></div>
+<!-- Footer -->
+<div data-include="footer.html"></div>
+</body></html>
