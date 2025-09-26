@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   color: var(--text-dark);
   background-color: var(--bg-off-white); /* Fallback */
-  background-image: url('https://www.google.com/maps/place/Charnock+Hospital/@22.6260158,88.4348999,3a,75y,90t/data=!3m8!1e2!3m6!1sAF1QipPBxapsGDcNla8i0vRBOqSXUfg3cLtQTzz19Rnc!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fp%2FAF1QipPBxapsGDcNla8i0vRBOqSXUfg3cLtQTzz19Rnc%3Dw203-h304-k-no!7i853!8i1280!4m9!3m8!1s0x39f89e31bdc08491:0xc5041e3b18a9b07a!8m2!3d22.6259691!4d88.4348841!10e5!14m1!1BCgIgARICEAE!16s%2Fg%2F1td9z2ml?entry=ttu&g_ep=EgoyMDI1MDkyMy4wIKXMDSoASAFQAw%3D%3D#'); /* Replace with your desired background image */
+  background-image: url('https://scontent.fccu2-1.fna.fbcdn.net/v/t39.30808-6/472289042_3832109643676085_700873372724131112_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=6V5HoJ4bLrMQ7kNvwEbYeDV&_nc_oc=AdmBKD0SnrHVWsa7Hz5ivor3jHk8KMnSVb6l0GUH3G9BpXlAorfGgGS_BZW08Q2alHMdq_kR1Yk4NVKqV57szju9&_nc_zt=23&_nc_ht=scontent.fccu2-1.fna&_nc_gid=IwSP3IIRh1KwIflkexM0EQ&oh=00_Afaa16q6nUi2l9YuD-WAzTSRN43voPOS59KLenSzmQnTGQ&oe=68DC8BE6'); /* Replace with your desired background image */
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Keeps background fixed when scrolling */
