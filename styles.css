@@ -17,7 +17,7 @@ body {
   line-height: 1.6;
   color: var(--text-dark);
   background-color: var(--bg-off-white); /* Fallback */
-  background-image: url('https://scontent.fccu20-1.fna.fbcdn.net/v/t39.30808-6/472289042_3832109643676085_700873372724131112_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=8ZwSP0ztf9kQ7kNvwEVG_w5&_nc_oc=AdkF2Q1jPLPUl0_hlJxZ3BtFq1Tew4-ayNqfnbeIpNY_A0CpEDdoYt8qEYKYjVyxafAeIB4JcO5h_RSX7DzPhwkx&_nc_zt=23&_nc_ht=scontent.fccu20-1.fna&_nc_gid=m2gkv7WXxplGeaelB9ymbQ&oh=00_Afjdtdsm6dOABW-OttIXRNseSSGhwwLUKRSH7N6vIVYJzw&oe=6922A3A6'); /* Replace with your desired background image */
+  background-image: url('https://scontent.fccu20-1.fna.fbcdn.net/v/t39.30808-6/472289042_3832109643676085_700873372724131112_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=8ZwSP0ztf9kQ7kNvwEVG_w5&_nc_oc=AdkF2Q1jPLPUl0_hlJxZ3BtFq1Tew4-ayNqfnbeIpNY_A0CpEDdoYt8qEYKYjVyxafAeIB4JcO5h_RSX7DzPhwkx&_nc_zt=23&_nc_ht=scontent.fccu20-1.fna&_nc_gid=m2gkv7WXxplGeaelB9ymbQ&oh=00_Afjdtdsm6dOABW-OttIXRNseSSGhwwLUKRSH7N6vIVYJzw&oe=6922A3A6.jpeg'); /* Replace with your desired background image */
   background-size: cover;
   background-position: center;
   background-attachment: fixed; /* Keeps background fixed when scrolling */
